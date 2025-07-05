@@ -13,12 +13,12 @@ var electronWindowOptions = {
   height: 730,
   minWidth: 350,
   minHeight: 250,
+  show: false,
   webPreferences: {
     preload: path.join(__dirname, '..', 'renderer', 'preload.js'),
     nodeIntegration: true,
-  contextIsolation: false
-  },
-  
+    contextIsolation: false
+  }
 };
 
 

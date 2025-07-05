@@ -2,7 +2,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Inky",
+            "name": "Inky Debug",
             "type": "node",
             "request": "launch",
             "program": "${workspaceRoot}/app/main-process/main.js",
@@ -10,20 +10,21 @@
             "args": [],
             "cwd": "${workspaceRoot}",
             "runtimeExecutable": "${workspaceRoot}/app/node_modules/.bin/electron",
-            "runtimeArgs": [/*
-                ".",
-                "--enable-logging"
-            */],
-            "env": {},
+            "runtimeArgs": ["--remote-debugging-port=9223"],
+            "env": {
+                "NODE_ENV": "development"
+            },
             "console": "integratedTerminal",
-            "sourceMaps": false,
-        },
-        {
-            "name": "Attach",
-            "type": "node",
-            "request": "attach",
-            "port": 5858,
-            "sourceMaps": false,
+            "sourceMaps": true,
+            "outFiles": ["${workspaceRoot}/app/**/*.js"],
+            "skipFiles": ["<node_internals>/**"],
+            "trace": true,
+            "resolveSourceMapLocations": [
+                "${workspaceFolder}/**",
+                "!**/node_modules/**"
+            ],
+            "smartStep": true,
+            "outputCapture": "std"
         }
     ]
 }
